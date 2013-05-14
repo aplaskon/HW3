@@ -8,19 +8,16 @@ function createKitten(kittenName, lastWords){
 }
 
 var bag = {
-    paradise: {},
-    put: function(beast){this.paradise.push(beast)},
-    getKitten: function (kittenName) {
-        var volume = this.paradise.length;
-        for(var i = 0; i < volume; i++){
-            if(this.paradise[i].name == kittenName){
-                return this.paradise[i];
-            }
-            return null;
-        }
+    kittens: {},
+    put: function(beast){
+        this.kittens[beast.name] = beast
     },
-    sink: function () {
-        var volume = this.paradise.length;
-        for(var i = 0; i < volume; i++){this.paradise[i].die()}
+    getKitten: function (name){
+       return this.kittens[name];
+    },
+    sink: function (){
+        for (var item in this.kittens){
+            this.kittens[item].die()
+        }
     }
-}
+};
